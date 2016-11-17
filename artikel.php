@@ -1,6 +1,8 @@
 <?php require_once 'init/core.php';
 require_once 'view/header.php';
-if (isset(strip_tags(trim($_GET['judul']))) && isset(strip_tags(trim($_GET['id'])))){
+$judul_artikel = strip_tags(trim($_GET['judul']));
+$id_artikel    = strip_tags(trim($_GET['id']));
+if (isset($judul_artikel) && isset($id_artikel)){
   $id    = mysqli_real_escape_string($link, $_GET['id']);
   $judul = mysqli_real_escape_string($link, $_GET['judul']);
 $hasil = tampil_artikel($judul);
@@ -10,6 +12,7 @@ $hasil = tampil_artikel($judul);
     $tag   = $artikel['tag'];
     $img   = $artikel['gambar'];
     $id    = $artikel['id'];
+    $Parsedown = new Parsedown();
 
 ?>
 <div class="container">
@@ -32,7 +35,7 @@ $hasil = tampil_artikel($judul);
 </div>
 <br><br>
 <div class="caption">
-        <p><?php echo $isi;?></p>
+        <p><?php echo $Parsedown->text($isi);?></p>
         <o class="breadcrumb">
       <li>  tag : <a class="btn w3-teal" href="search.php?tag=<?php echo $tag;?>"><?php echo $tag;?></a> </li>
       <li>  Penulis : <i>Dion Arya Pamungkas</i></li>
