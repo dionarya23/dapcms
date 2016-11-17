@@ -1,8 +1,8 @@
 <?php require_once 'init/core.php';
 require_once 'view/header.php';
-if (isset($_GET['judul']) && isset($_GET['id'])){
-  $id = $_GET['id'];
-  $judul = $_GET['judul'];
+if (isset(strip_tags(trim($_GET['judul']))) && isset(strip_tags(trim($_GET['id'])))){
+  $id    = mysqli_real_escape_string($link, $_GET['id']);
+  $judul = mysqli_real_escape_string($link, $_GET['judul']);
 $hasil = tampil_artikel($judul);
   while ($artikel = mysqli_fetch_assoc($hasil)){
     $judul = $artikel['judul'];
