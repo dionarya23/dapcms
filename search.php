@@ -3,7 +3,8 @@ require_once 'view/header.php'; ?>
 <div class="container">
   <div class="row">
 <?php
-if (isset(strip_tags(trim($_GET['cari'])))){
+$cari = strip_tags(trim($_GET['cari']));
+if (isset($cari)){
   $pencarian = strip_tags(trim($_GET['query']));
   $pencarian = mysqli_real_escape_string($link, $pencarian);
   $query = "SELECT * FROM blog WHERE judul LIKE '%$pencarian%'";
