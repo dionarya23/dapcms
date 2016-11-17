@@ -8,9 +8,11 @@ $hasil = kegunaan($_SESSION['user']);
     $nama = $data['nama']; ?>
       <div id="wrapper">
     <?php
-if (isset($_GET['judul']) && isset($_GET['id'])){
-  $id = $_GET['id'];
-  $judul = $_GET['judul'];
+    $id    = strip_tags(trim($_GET['id']));
+    $judul = strip_tags(trim($_GET['judul']));
+if (isset($judul) && isset($id)){
+  $id    = mysqli_real_escape_string($link, $id);
+  $judul = mysqli_real_escape_string($link, $judul);
   $hasil = untuk_edit($judul);
   while ($edit = mysqli_fetch_assoc($hasil)) {
     $judul = $edit['judul'];
