@@ -91,7 +91,11 @@ if (isset($_POST['post'])){
                 </form>
         </div>
         <!-- /.row -->
-
+        <div class="well">
+            <p>Untuk Syntax penulisan artikel seperti h1, membuat list, table .membuat gambar link disini mendukung markdown
+            silahkan kunjungi halaman <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> Untuk melihat cara penulisan disini<br> <a href="http://fb.com/dion.aryapamungkas" target="__blank" class="fa fa-facebook">acebook</a>,
+        <a href="http://twitter.com/DionArya_P" target="__blank" class="fa fa-twitter">Twitter</a>, <a href="http://github.com/dionarya6661" target="__blank" class="fa fa-github">Github</a> </p>
+        </div>
     </div>
     <!-- /.container-fluid -->
 </div>
