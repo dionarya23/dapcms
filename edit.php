@@ -15,8 +15,8 @@ if (isset($judul) && isset($id)){
   $judul = mysqli_real_escape_string($link, $judul);
   $hasil = untuk_edit($judul);
   while ($edit = mysqli_fetch_assoc($hasil)) {
-    $judul = $edit['judul'];
-    $isi   = $edit['isi'];
+    $judul_artikel = $edit['judul'];
+    $isi_artikel   = $edit['isi'];
     $img   = $edit['gambar'];
     $tag   = $edit['tag'];
 require_once 'view/navigation.php'; ?>
@@ -59,7 +59,7 @@ if (isset($_POST['post'])){
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Buat Artikel
+                    Edit Artikel
                 </h1>
                 <ol class="breadcrumb">
                     <li>
@@ -80,7 +80,7 @@ if (isset($_POST['post'])){
 
                     <div class="form-group">
                         <label>Judul Artikel :</label>
-                        <input class="form-control" type="text" name="judul" placeholder="Masukan Judul Disini" value="<?php echo $judul;?>" required>
+                        <input class="form-control" type="text" name="judul" placeholder="Masukan Judul Disini" value="<?php echo $judul_artikel;?>" required>
                     </div>
 
                     <div class="form-group">
@@ -91,7 +91,7 @@ if (isset($_POST['post'])){
 
                     <div class="form-group">
                         <label>Masukan Isi Artikel :</label>
-                        <textarea class="form-control" name="isi" rows="15"><?php echo $isi; ?></textarea>
+                        <textarea class="form-control" name="isi" rows="15"><?php echo $isi_artikel; ?></textarea>
                     </div>
 
                     <div class="form-group">
