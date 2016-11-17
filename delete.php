@@ -4,9 +4,11 @@ require_once 'view/header.php';
 if (!isset($_SESSION['user'])){
   header('Location : login.php');
 }
-if (isset($_GET['judul']) && isset($_GET['id'])) {
-  $judul = $_GET['judul'];
-  $id    = $_GET['id'];
+$id    = strip_tags(trim($_GET['id']));
+$judul = strip_tags(trim($_GET['judul']));
+if (isset($judul) && isset($id)) {
+  $id    = mysqli_real_escape_string($link, $id);
+  $judul = mysqli_real_escape_string($ink $judul);
   $query = "DELETE FROM blog WHERE judul='$judul'";
   if (mysqli_query($link, $query)){
     $query2 = "DELETE FROM komentar WHERE id_postingan='$id'";
