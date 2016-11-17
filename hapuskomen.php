@@ -4,8 +4,9 @@ require_once 'view/header.php';
 if (!isset($_SESSION['user'])){
   header('Location : login.php');
 }
-if (isset($_GET['id'])) {
-  $id    = $_GET['id'];
+$id = strip_tags(trim($_GET['id']))
+if (isset($id)) {
+  $id    = mysqli_real_escape_string($link, $id);
   $query = "DELETE FROM komentar WHERE id=$id";
   if (mysqli_query($link, $query)){
     header("Location: komentar.php");
